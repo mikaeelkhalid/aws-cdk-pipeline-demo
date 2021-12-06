@@ -1,6 +1,8 @@
+from os import path
 from aws_cdk import (
-    core as cdk
-    # aws_sqs as sqs,
+    core as cdk,
+    aws_lambda as _lambda,
+    aws_apigateway as apigw,
 )
 
 # For consistency with other languages, `cdk` is the preferred import name for
@@ -22,3 +24,21 @@ class PipelineDemoStack(cdk.Stack):
         #     self, "PipelineDemoQueue",
         #     visibility_timeout=cdk.Duration.seconds(300),
         # )
+        this_dir = path.dirname(__file__)
+
+        handler = _lambda.Function(
+            self,"Handler",
+            runtime=_lambda.Runtime.PYTHON_3_7,
+            code=_lambda.Code.from_asset(path.join(this_dir, "lambda")),
+            handler="handler.handler",
+        )
+
+        gw = apigw.LambdaRestApi(
+            self, "Gateway",
+            handler=handler.current_version
+        )
+
+        self.url_output = core.CfnOutput(
+            self, "GatewayURL",
+            value=gw.url,
+        )
