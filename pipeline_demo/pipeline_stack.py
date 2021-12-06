@@ -36,7 +36,7 @@ class PipelineStack(core.Stack):
                 synth_command="cdk synth")
         )
 
-        pipeline.add_application_stage(WebserviceStage(self, "Deploy", 
+        pipeline.add_application_stage(WebserviceStage(self, "Pre-Prod", 
             env={
                 "account": "454181958425",
                 "region": "us-east-1"

@@ -8,7 +8,7 @@ class WebserviceStage(core.Stage):
         super().__init__(scope, id, **kwargs)
 
         # The code that defines your stack goes here
-        service = PipelineDemoStack(self, "PipelineDemoStack")
+        service = PipelineDemoStack(self, "Webservice")
 
         self.url_output = service.url_output
 
