@@ -9,11 +9,11 @@ from aws_cdk import core as cdk
 # being updated to use `cdk`.  You may delete this import if you don't need it.
 from aws_cdk import core
 
-from pipeline_demo.pipeline_demo_stack import PipelineDemoStack
+# from pipeline_demo.pipeline_demo_stack import PipelineDemoStack
 from pipeline_demo.pipeline_stack import PipelineStack
 
 app = core.App()
-PipelineDemoStack(app, "PipelineDemoStack")
+# PipelineDemoStack(app, "PipelineDemoStack")
 PipelineStack(app, "PipelineStack",
     env={
         'region': 'us-east-1', 
