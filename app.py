@@ -16,8 +16,8 @@ app = core.App()
 PipelineDemoStack(app, "PipelineDemoStack")
 PipelineStack(app, "PipelineStack",
     env={
-        'region': 'us-east-1', 
-        'account': '454181958425'
+        'region': 'us-east-12', 
+        'account': '12345678'
         }
     )
 
